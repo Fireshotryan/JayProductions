@@ -665,40 +665,15 @@ main {
 		min-height: auto;
 		padding-top: 20px;
 		gap: 32px;
-		justify-items: center;
-		text-align: center;
 	}
 
 	.hero-copy h1 {
 		font-size: clamp(3.2rem, 8vw, 5.8rem);
 		max-width: 11ch;
-		margin-inline: auto;
-	}
-
-	.hero-copy,
-	.section-heading,
-	.split-content,
-	.cta-panel {
-		text-align: center;
-	}
-
-	.hero-copy {
-		width: min(100%, 760px);
-		margin-inline: auto;
-	}
-
-	.hero-actions {
-		justify-content: center;
-	}
-
-	.lead {
-		margin-inline: auto;
 	}
 
 	.hero-metrics {
 		grid-template-columns: repeat(3, minmax(0, 1fr));
-		max-width: 760px;
-		margin-inline: auto;
 	}
 
 	.visual-large {
@@ -707,8 +682,6 @@ main {
 
 	.visual-stack {
 		grid-template-columns: repeat(2, minmax(0, 1fr));
-		width: min(100%, 760px);
-		margin-inline: auto;
 	}
 
 	.work-card,
@@ -723,8 +696,6 @@ main {
 
 	.split-content {
 		padding-top: 18px;
-		max-width: 720px;
-		margin-inline: auto;
 	}
 
 	.hero-copy h1 {
@@ -734,8 +705,47 @@ main {
 	.work-grid,
 	.process-grid {
 		grid-template-columns: 1fr;
-		max-width: 760px;
+	}
+
+	/* Center header/footer/nav and hero on tablet widths (<=1024px) */
+	.topbar,
+	.footer {
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.nav,
+	.footer-links {
+		justify-content: center;
+	}
+
+	.hero-copy {
+		text-align: center;
 		margin-inline: auto;
+	}
+
+	.hero-actions {
+		justify-content: center;
+	}
+
+	.hero-metrics div {
+		text-align: center;
+	}
+
+	.hero-visual {
+		justify-self: center;
+	}
+
+	/* Ensure section headings center on tablet */
+	.section-heading {
+		justify-items: center;
+	}
+
+	.section-heading h2,
+	.section-heading p {
+		text-align: center !important;
+		margin-inline: auto;
+		width: min(100%, 92%);
 	}
 }
 
@@ -754,7 +764,6 @@ main {
 	.footer {
 		flex-direction: column;
 		align-items: center;
-		text-align: center;
 	}
 
 	.nav,
@@ -765,47 +774,55 @@ main {
 	.nav {
 		gap: 16px;
 		font-size: 0.82rem;
-		justify-content: center;
 	}
 
 	.hero {
 		gap: 24px;
 		padding-top: 18px;
-		justify-items: center;
+	}
+
+	.hero-copy {
 		text-align: center;
+		margin-inline: auto;
+	}
+
+	/* Center section headings on tablet */
+	.section-heading,
+	.section-heading h2,
+	.section-heading p {
+		text-align: center !important;
+		margin-inline: auto;
+		width: min(100%, 92%);
+	}
+
+	.hero-actions {
+		justify-content: center;
+	}
+
+	.hero-metrics div {
+		text-align: center;
+	}
+
+	.hero-visual {
+		justify-self: center;
 	}
 
 	.hero-copy h1 {
 		font-size: clamp(2.6rem, 8.5vw, 4.2rem);
 		max-width: 10ch;
-		margin-inline: auto;
 	}
 
 	.hero-actions {
 		gap: 12px;
-		justify-content: center;
 	}
 
 	.hero-metrics {
 		grid-template-columns: repeat(2, minmax(0, 1fr));
-		max-width: 560px;
-		margin-inline: auto;
 	}
 
 	.visual-stack,
 	.form-row {
 		grid-template-columns: 1fr;
-	}
-
-	.hero-visual {
-		width: min(100%, 560px);
-		margin-inline: auto;
-	}
-
-	.work-grid,
-	.process-grid {
-		max-width: 560px;
-		margin-inline: auto;
 	}
 
 	.visual-large {
@@ -814,7 +831,6 @@ main {
 
 	.section {
 		padding-top: 68px;
-		text-align: center;
 	}
 
 	.cta {
@@ -866,7 +882,6 @@ main {
 	.footer {
 		flex-direction: column;
 		align-items: center;
-		text-align: center;
 	}
 
 	.footer-links {
@@ -886,37 +901,12 @@ main {
 
 	.hero {
 		gap: 20px;
-		padding-top: 10px;
-		justify-items: center;
-		text-align: center;
 	}
 
 	.hero-copy h1 {
 		font-size: clamp(2rem, 9.5vw, 3rem);
 		max-width: 11ch;
 		line-height: 1.05;
-		margin-inline: auto;
-	}
-
-	.hero-copy,
-	.section-heading,
-	.split-content,
-	.cta-panel {
-		text-align: center;
-	}
-
-	.hero-copy {
-		width: min(100%, 560px);
-		margin-inline: auto;
-	}
-
-	.section-heading,
-	.split-content,
-	.cta-panel,
-	.hero-visual,
-	.work-grid,
-	.process-grid {
-		margin-inline: auto;
 	}
 
 	.hero-copy,
@@ -927,10 +917,56 @@ main {
 		width: 100%;
 	}
 
+	.hero-copy {
+		text-align: center;
+	}
+
+	/* Ensure absolute centering on very small phones */
+}
+
+@media (max-width: 480px) {
+	.hero {
+		grid-template-columns: 1fr;
+		justify-items: center;
+		padding-top: 18px;
+	}
+
+	.hero-copy {
+		text-align: center;
+		justify-self: center;
+		margin-inline: auto;
+		width: min(100%, 92%);
+	}
+
+	.hero-copy h1 {
+		font-size: clamp(1.8rem, 9.5vw, 2.6rem);
+		max-width: 28ch;
+		line-height: 1.02;
+	}
+
+	.hero-visual {
+		justify-self: center;
+		width: min(100%, 92%);
+	}
+
+	/* Center section headings and related intro text on very small screens */
+	.section-heading,
+	.section-heading h2,
+	.section-heading p,
+	.split-content {
+		text-align: center !important;
+		margin-inline: auto;
+		width: min(100%, 92%);
+	}
+
+	.section-heading h2 {
+		max-width: 36ch;
+		margin-inline: auto;
+	}
+
 	.hero-metrics {
 		gap: 10px;
 		margin-top: 22px;
-		max-width: 100%;
 	}
 
 	.hero-metrics div {
@@ -953,8 +989,6 @@ main {
 
 	.hero-actions {
 		flex-direction: column;
-		width: 100%;
-		justify-content: center;
 	}
 
 	.button {
@@ -1025,14 +1059,12 @@ main {
 	.section,
 	.cta {
 		padding-top: 60px;
-		text-align: center;
 	}
 
 	.section-heading h2,
 	.cta-panel h2 {
 		font-size: clamp(2rem, 8vw, 3.1rem);
 		max-width: 100%;
-		margin-inline: auto;
 	}
 
 	.section-heading h2,
@@ -1054,11 +1086,6 @@ main {
 	.form-actions {
 		flex-direction: column;
 		align-items: stretch;
-	}
-
-	.form-actions,
-	.contact-form {
-		text-align: left;
 	}
 
 	.form-note {
@@ -1085,11 +1112,5 @@ main {
 	.footer-links,
 	.social-link {
 		letter-spacing: 0.12em;
-	}
-
-	.work-grid,
-	.process-grid,
-	.hero-visual {
-		width: min(100%, 560px);
 	}
 }

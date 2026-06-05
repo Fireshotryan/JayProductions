@@ -42,3 +42,41 @@ if (contactForm && formStatus) {
 		window.location.href = `mailto:hello@jayproductions.nl?subject=${subject}&body=${body}`;
 	});
 }
+
+		/* Lightbox: open gallery images in modal on click */
+		(() => {
+			const galleryImgs = document.querySelectorAll('.project-gallery .gallery-item img');
+			const lightbox = document.getElementById('lightbox');
+			const lightboxImg = lightbox && lightbox.querySelector('.lightbox-img');
+			const closeBtn = lightbox && lightbox.querySelector('.lightbox-close');
+
+			if (!galleryImgs.length || !lightbox || !lightboxImg) return;
+
+			function open(src, alt) {
+				lightboxImg.src = src;
+				lightboxImg.alt = alt || '';
+				lightbox.classList.add('is-open');
+				lightbox.setAttribute('aria-hidden', 'false');
+				document.body.style.overflow = 'hidden';
+			}
+
+			function close() {
+				lightbox.classList.remove('is-open');
+				lightbox.setAttribute('aria-hidden', 'true');
+				lightboxImg.src = '';
+				document.body.style.overflow = '';
+			}
+
+			galleryImgs.forEach((img) => {
+				img.style.cursor = 'zoom-in';
+				img.addEventListener('click', () => open(img.src, img.alt));
+			});
+
+			lightbox.addEventListener('click', (e) => {
+				if (e.target === lightbox || e.target === closeBtn) close();
+			});
+
+			document.addEventListener('keydown', (e) => {
+				if (e.key === 'Escape' && lightbox.classList.contains('is-open')) close();
+			});
+		})();

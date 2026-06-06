@@ -43,6 +43,47 @@ if (contactForm && formStatus) {
 	});
 }
 
+const gearPanel = document.querySelector('[data-gear-panel]');
+const gearOpenButton = document.querySelector('[data-gear-open]');
+const gearCloseButtons = document.querySelectorAll('[data-gear-close]');
+let previousGearFocus = null;
+
+function openGearPanel() {
+	if (!gearPanel) {
+		return;
+	}
+
+	previousGearFocus = document.activeElement;
+	gearPanel.hidden = false;
+	document.body.style.overflow = 'hidden';
+	gearPanel.querySelector('.gear-close')?.focus();
+}
+
+function closeGearPanel() {
+	if (!gearPanel) {
+		return;
+	}
+
+	gearPanel.hidden = true;
+	document.body.style.overflow = '';
+
+	if (previousGearFocus && typeof previousGearFocus.focus === 'function') {
+		previousGearFocus.focus();
+	}
+}
+
+gearOpenButton?.addEventListener('click', openGearPanel);
+
+gearCloseButtons.forEach((button) => {
+	button.addEventListener('click', closeGearPanel);
+});
+
+document.addEventListener('keydown', (event) => {
+	if (event.key === 'Escape' && gearPanel && !gearPanel.hidden) {
+		closeGearPanel();
+	}
+});
+
 const projectGrid = document.querySelector('[data-project-grid]');
 
 if (projectGrid) {

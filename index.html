@@ -47,6 +47,7 @@
 				<div class="hero-actions">
 					<a class="button button-primary" href="#work">Bekijk werk</a>
 					<a class="button button-secondary" href="#contact">Start een project</a>
+					<button class="button button-secondary" type="button" data-gear-open>Gearlijst</button>
 				</div>
 				<dl class="hero-metrics">
 					<div>
@@ -312,6 +313,63 @@
 			</div>
 		</section>
 	</main>
+
+	<div class="gear-panel" data-gear-panel hidden role="dialog" aria-modal="true" aria-labelledby="gear-title">
+		<button class="gear-panel-backdrop" type="button" data-gear-close aria-label="Gearlijst sluiten"></button>
+		<div class="gear-panel-content">
+			<div class="gear-panel-header">
+				<p class="eyebrow">Gear</p>
+				<h2 id="gear-title">Gearlijst</h2>
+				<button class="gear-close" type="button" data-gear-close aria-label="Gearlijst sluiten">Sluiten</button>
+			</div>
+			<div class="gear-groups">
+				<section class="gear-group">
+					<h3>Camera</h3>
+					<ul class="gear-list">
+						<li><span>Blackmagic Design</span><strong>URSA Mini Pro 12K</strong></li>
+						<li><span>Blackmagic Design</span><strong>Pocket Cinema Camera 6K Pro</strong></li>
+						<li><span>Blackmagic Design</span><strong>Pocket Cinema Camera 6K</strong></li>
+						<li><span>DJI</span><strong>Mini 3 Drone</strong></li>
+					</ul>
+				</section>
+				<section class="gear-group">
+					<h3>Lenses</h3>
+					<ul class="gear-list">
+						<li><span>Blazar Remus</span><strong>65mm Anamorphic 1.5x FF</strong></li>
+						<li><span>Canon EF-S</span><strong>18-55mm, 55-250mm</strong></li>
+					</ul>
+				</section>
+				<section class="gear-group">
+					<h3>Monitoring &amp; Wireless</h3>
+					<ul class="gear-list">
+						<li><span>Portkeys</span><strong>HS7T Monitor</strong></li>
+						<li><span>Portkeys</span><strong>HDH7 Monitor</strong></li>
+						<li><span>Hollyland</span><strong>Mars 4K Wireless Video System</strong></li>
+					</ul>
+				</section>
+				<section class="gear-group">
+					<h3>Audio</h3>
+					<ul class="gear-list">
+						<li><span>Rode</span><strong>NTG4+ Shotgun Microphone</strong></li>
+						<li><span>Sennheiser</span><strong>MKE 400</strong></li>
+						<li><span>Zoom</span><strong>H5 Recorder</strong></li>
+						<li><span>Rode</span><strong>NTH-100 Headphones</strong></li>
+						<li><span>Rode</span><strong>Blimp MKII</strong></li>
+						<li><span>Rode</span><strong>Boompole</strong></li>
+					</ul>
+				</section>
+				<section class="gear-group">
+					<h3>Power</h3>
+					<ul class="gear-list">
+						<li><span>Rolux</span><strong>RL-160S V-Mount Batteries</strong></li>
+						<li><span>SWIT</span><strong>PB-M98S</strong></li>
+						<li><span>SmallRig</span><strong>NP-F970 USB-C Battery</strong></li>
+						<li><span>Diverse</span><strong>V-Mount Chargers &amp; Power Solutions</strong></li>
+					</ul>
+				</section>
+			</div>
+		</div>
+	</div>
 
 	<footer class="footer">
 		<span>JayProductions</span>

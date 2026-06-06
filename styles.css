@@ -961,6 +961,10 @@ main {
 		justify-content: center;
 	}
 
+	.work-filter-note {
+		text-align: center;
+	}
+
 	/* Center header/footer/nav and hero on tablet widths (<=1024px) */
 	.topbar,
 	.footer {

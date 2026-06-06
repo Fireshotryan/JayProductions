@@ -43,6 +43,115 @@ if (contactForm && formStatus) {
 	});
 }
 
+const projectGrid = document.querySelector('[data-project-grid]');
+
+if (projectGrid) {
+	const projectCards = Array.from(projectGrid.querySelectorAll('.work-card'));
+	const tagButtons = Array.from(document.querySelectorAll('.filter-chip[data-tag]'));
+	const sortButtons = Array.from(document.querySelectorAll('.sort-button[data-sort]'));
+	const emptyState = document.querySelector('[data-project-empty]');
+	const filterNote = document.querySelector('[data-project-filter-note]');
+	const selectedTags = new Set();
+	let sortOrder = 'desc';
+	let collapsedAllTags = false;
+
+	function getCardTags(card) {
+		return String(card.dataset.tags || '')
+			.split(/\s+/)
+			.filter(Boolean);
+	}
+
+	function getAvailableTags() {
+		return tagButtons
+			.map((button) => button.dataset.tag)
+			.filter((tag) => tag && tag !== 'all');
+	}
+
+	function updatePressedStates() {
+		tagButtons.forEach((button) => {
+			const tag = button.dataset.tag;
+			button.setAttribute('aria-pressed', tag === 'all' ? String(selectedTags.size === 0) : String(selectedTags.has(tag)));
+		});
+
+		sortButtons.forEach((button) => {
+			button.setAttribute('aria-pressed', String(button.dataset.sort === sortOrder));
+		});
+	}
+
+	function renderProjects() {
+		const sortedCards = [...projectCards].sort((a, b) => {
+			const yearA = Number(a.dataset.year || 0);
+			const yearB = Number(b.dataset.year || 0);
+			const yearDifference = sortOrder === 'desc' ? yearB - yearA : yearA - yearB;
+
+			if (yearDifference !== 0) {
+				return yearDifference;
+			}
+
+			return String(a.dataset.title || '').localeCompare(String(b.dataset.title || ''), 'nl');
+		});
+
+		let visibleCount = 0;
+
+		sortedCards.forEach((card) => {
+			const tags = getCardTags(card);
+			const isVisible = selectedTags.size === 0 || [...selectedTags].some((tag) => tags.includes(tag));
+
+			card.classList.toggle('is-hidden', !isVisible);
+			projectGrid.appendChild(card);
+
+			if (isVisible) {
+				visibleCount += 1;
+			}
+		});
+
+		if (emptyState) {
+			emptyState.hidden = visibleCount > 0;
+		}
+
+		if (filterNote) {
+			filterNote.hidden = !collapsedAllTags;
+		}
+
+		updatePressedStates();
+	}
+
+	tagButtons.forEach((button) => {
+		button.addEventListener('click', () => {
+			const tag = button.dataset.tag;
+
+			if (tag === 'all') {
+				selectedTags.clear();
+				collapsedAllTags = false;
+			} else if (selectedTags.has(tag)) {
+				selectedTags.delete(tag);
+				collapsedAllTags = false;
+			} else {
+				selectedTags.add(tag);
+				const availableTags = getAvailableTags();
+
+				if (selectedTags.size === availableTags.length) {
+					selectedTags.clear();
+					collapsedAllTags = true;
+				} else {
+					collapsedAllTags = false;
+				}
+			}
+
+			renderProjects();
+		});
+	});
+
+	sortButtons.forEach((button) => {
+		button.addEventListener('click', () => {
+			sortOrder = button.dataset.sort || 'desc';
+			renderProjects();
+		});
+	});
+
+	renderProjects();
+}
+
 		/* Lightbox: open gallery images in modal on click */
 		(() => {
 			const galleryImgs = document.querySelectorAll('.project-gallery .gallery-item img');

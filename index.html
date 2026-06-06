@@ -5,7 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<meta name="description" content="JayProductions portfolio voor filmmaker Jay." />
 	<title>JayProductions</title>
-	<link rel="icon" href="images/JPlogo.jpeg" type="image/jpeg" />
+	<link rel="icon" href="images/favicon.jpeg" type="image/jpeg" />
 	<link rel="preconnect" href="https://fonts.googleapis.com" />
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 	<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet" />
@@ -101,12 +101,29 @@
 				</h2>
 			</div>
 
-			<div class="work-grid">
+			<div class="work-tools" aria-label="Project filters">
+				<div class="tag-filters" aria-label="Tags">
+					<button class="filter-chip" type="button" data-tag="all" aria-pressed="true">Alle</button>
+					<button class="filter-chip" type="button" data-tag="brandfilm" aria-pressed="false">Brandfilm</button>
+					<button class="filter-chip" type="button" data-tag="aftermovie" aria-pressed="false">Aftermovie</button>
+					<button class="filter-chip" type="button" data-tag="fotografie" aria-pressed="false">Fotografie</button>
+					<button class="filter-chip" type="button" data-tag="muziekvideo" aria-pressed="false">Muziekvideo</button>
+					<button class="filter-chip" type="button" data-tag="podcastreeks" aria-pressed="false">Podcastreeks</button>
+					<button class="filter-chip" type="button" data-tag="promo-video" aria-pressed="false">Promo video</button>
+				</div>
+				<div class="sort-controls" aria-label="Sortering">
+					<button class="sort-button" type="button" data-sort="desc" aria-pressed="true">Nieuwste</button>
+					<button class="sort-button" type="button" data-sort="asc" aria-pressed="false">Oudste</button>
+				</div>
+			</div>
+			<p class="work-filter-note" data-project-filter-note hidden>Ik heb je geholpen door alle te selecteren :)</p>
+
+			<div class="work-grid" data-project-grid>
 
 
-				<article class="work-card">
+				<article class="work-card" data-title="Okya Band" data-year="2023" data-tags="muziekvideo">
 					<div class="work-meta">
-						<span>Muziekvisual</span>
+						<span>Muziekvideo</span>
 						<span>2023</span>
 					</div>
 					<h3>Okya Band</h3>
@@ -114,19 +131,19 @@
 					<a class="project-card-link" href="Projects/okya-band.html">Bekijk project</a>
 				</article>
 
-				<article class="work-card">
+				<article class="work-card" data-title="Mexx" data-year="2022" data-tags="brandfilm">
 					<div class="work-meta">
-						<span>Promo video</span>
+						<span>Brandfilm</span>
 						<span>2022</span>
 					</div>
-					<h3>Mexx Promo</h3>
+					<h3>Mexx</h3>
 					<p>Een promotievideo met een verzorgde commerciële uitstraling, strakke timing en een heldere merkpresentatie.</p>
-					<a class="project-card-link" href="Projects/mexx-promo.html">Bekijk project</a>
+					<a class="project-card-link" href="Projects/mexx.html">Bekijk project</a>
 				</article>
 
-				<article class="work-card">
+				<article class="work-card" data-title="All Safety" data-year="2024" data-tags="aftermovie">
 					<div class="work-meta">
-						<span>Promo video</span>
+						<span>Aftermovie</span>
 						<span>2024</span>
 					</div>
 					<h3>All Safety</h3>
@@ -134,9 +151,9 @@
 					<a class="project-card-link" href="Projects/all-safety.html">Bekijk project</a>
 				</article>
 
-				<article class="work-card">
+				<article class="work-card" data-title="Koi Cave" data-year="2024" data-tags="aftermovie">
 					<div class="work-meta">
-						<span>Promo video</span>
+						<span>Aftermovie</span>
 						<span>2024</span>
 					</div>
 					<h3>Koi Cave</h3>
@@ -144,9 +161,9 @@
 					<a class="project-card-link" href="Projects/koi-cave.html">Bekijk project</a>
 				</article>
 
-				<article class="work-card">
+				<article class="work-card" data-title="FHM Podcast" data-year="2022" data-tags="podcastreeks brandfilm">
 					<div class="work-meta">
-						<span>Podcastreeks</span>
+						<span>Podcastreeks / brandfilm</span>
 						<span>2022</span>
 					</div>
 					<h3>FHM Podcast</h3>
@@ -154,7 +171,7 @@
 					<a class="project-card-link" href="Projects/fhm-podcast.html">Bekijk project</a>
 				</article>
 
-				<article class="work-card">
+				<article class="work-card" data-title="Velgado" data-year="2024" data-tags="fotografie">
 					<div class="work-meta">
 						<span>Fotografie</span>
 						<span>2024</span>
@@ -164,9 +181,9 @@
 					<a class="project-card-link" href="Projects/velgado.html">Bekijk project</a>
 				</article>
 
-				<article class="work-card">
+				<article class="work-card" data-title="Partij voor de Inwoners" data-year="2022" data-tags="promo-video">
 					<div class="work-meta">
-						<span>promo video</span>
+						<span>Promo video</span>
 						<span>2022</span>
 					</div>
 					<h3>Partij voor de Inwoners</h3>
@@ -174,6 +191,7 @@
 					<a class="project-card-link" href="Projects/partij-voor-de-inwoners-campagne.html">Bekijk project</a>
 				</article>
 			</div>
+			<p class="work-empty" data-project-empty hidden>Geen projecten gevonden.</p>
 		</section>
 
 		<section class="section split reveal" id="about">
@@ -189,10 +207,6 @@
 					Jay Ramharakh, Joram van Noort en Dylan Janssen combineren regie, camera, productie en montage in één
 					duidelijke visie. De stijl is ingetogen, cinematisch en doelgericht, met aandacht voor licht, ritme en
 					emotie.
-				</p>
-				<p>
-					De portfolio volgt dezelfde gedachte: veel negatieve ruimte, sterke typografie en een donkere basis
-					met zilver en bordeaux als contrasterende accenten.
 				</p>
 			</div>
 			<div class="profile-grid" aria-label="Profielfoto's van het team">
@@ -279,6 +293,8 @@
 								<option>Aftermovie</option>
 								<option>Interview</option>
 								<option>Muziekvideo</option>
+								<option>Bedrijfsvideo</option>
+								<option>Fotografie</option>
 								<option>Anders</option>
 							</select>
 						</label>

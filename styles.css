@@ -758,6 +758,16 @@ main {
 	min-height: 150px;
 }
 
+.form-guard {
+	position: absolute;
+	left: -10000px;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	opacity: 0;
+	pointer-events: none;
+}
+
 .contact-form input::placeholder,
 .contact-form textarea::placeholder {
 	color: rgba(201, 201, 201, 0.42);
@@ -788,6 +798,24 @@ main {
 .form-status {
 	min-height: 1.4em;
 	color: rgba(201, 201, 201, 0.88);
+}
+
+.form-status[data-state="success"] {
+	color: #d8f5df;
+}
+
+.form-status[data-state="error"] {
+	color: #ffc7c7;
+}
+
+.form-status[data-state="pending"] {
+	color: rgba(241, 241, 241, 0.86);
+}
+
+.contact-form button[disabled] {
+	cursor: wait;
+	opacity: 0.72;
+	transform: none;
 }
 
 .footer {

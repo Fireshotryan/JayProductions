@@ -275,15 +275,15 @@
 					Van branded content en aftermovies tot muziekvideo’s.
 					Iedere productie wordt benaderd met een filmische blik en oog voor detail.
 				</p>
-				<form class="contact-form" id="contact-form">
+				<form class="contact-form" id="contact-form" action="contact.php" method="post">
 					<div class="form-row">
 						<label>
 							<span>Naam</span>
-							<input type="text" name="name" placeholder="Jouw naam" required />
+							<input type="text" name="name" placeholder="Jouw naam" autocomplete="name" maxlength="80" required />
 						</label>
 						<label>
 							<span>E-mail</span>
-							<input type="email" name="email" placeholder="jij@bedrijf.nl" required />
+							<input type="email" name="email" placeholder="jij@bedrijf.nl" autocomplete="email" maxlength="120" required />
 						</label>
 					</div>
 					<div class="form-row">
@@ -303,11 +303,22 @@
 					</div>
 					<label class="message-field">
 						<span>Bericht</span>
-						<textarea name="message" rows="5" placeholder="Vertel kort over je idee, timing en gewenste stijl." required></textarea>
+						<textarea name="message" rows="5" maxlength="3000" placeholder="Vertel kort over je idee, timing en gewenste stijl." required></textarea>
 					</label>
+					<div class="form-guard" aria-hidden="true">
+						<label>
+							<span>Website</span>
+							<input type="text" name="website" tabindex="-1" autocomplete="off" />
+						</label>
+						<label>
+							<span>Bedrijf</span>
+							<input type="text" name="company" tabindex="-1" autocomplete="off" />
+						</label>
+					</div>
+					<input type="hidden" name="started_at" value="" data-started-at />
 					<div class="form-actions">
 						<button class="button button-primary" type="submit">Verstuur aanvraag</button>
-						<p class="form-note">We openen je e-mailapp met een ingevuld conceptbericht.</p>
+						<p class="form-note">Je aanvraag wordt beveiligd verstuurd naar JayProductions.</p>
 					</div>
 					<p class="form-status" aria-live="polite"></p>
 				</form>

@@ -24,22 +24,61 @@ const contactForm = document.querySelector('#contact-form');
 const formStatus = document.querySelector('.form-status');
 
 if (contactForm && formStatus) {
-	contactForm.addEventListener('submit', (event) => {
+	const startedAtField = contactForm.querySelector('[data-started-at]');
+	const submitButton = contactForm.querySelector('button[type="submit"]');
+
+	if (startedAtField) {
+		startedAtField.value = String(Math.floor(Date.now() / 1000));
+	}
+
+	const contactStatus = new URLSearchParams(window.location.search).get('contact');
+
+	if (contactStatus === 'sent') {
+		formStatus.textContent = 'Bedankt, je aanvraag is verzonden. We nemen zo snel mogelijk contact op.';
+		window.history.replaceState({}, document.title, `${window.location.pathname}#contact`);
+	} else if (contactStatus === 'error') {
+		formStatus.textContent = 'Verzenden is niet gelukt. Controleer je gegevens en probeer het opnieuw.';
+		window.history.replaceState({}, document.title, `${window.location.pathname}#contact`);
+	}
+
+	contactForm.addEventListener('submit', async (event) => {
 		event.preventDefault();
+		formStatus.textContent = 'Je aanvraag wordt beveiligd verzonden.';
+		formStatus.dataset.state = 'pending';
 
-		const formData = new FormData(contactForm);
-		const name = String(formData.get('name') || '').trim();
-		const email = String(formData.get('email') || '').trim();
-		const project = String(formData.get('project') || '').trim();
-		const message = String(formData.get('message') || '').trim();
+		if (submitButton) {
+			submitButton.disabled = true;
+		}
 
-		const subject = encodeURIComponent(`Projectaanvraag van ${name}`);
-		const body = encodeURIComponent(
-			`Naam: ${name}\nE-mail: ${email}\nProjecttype: ${project}\n\nBericht:\n${message}`
-		);
+		try {
+			const response = await fetch(contactForm.action, {
+				method: 'POST',
+				body: new FormData(contactForm),
+				headers: {
+					Accept: 'application/json',
+					'X-Requested-With': 'fetch',
+				},
+			});
+			const result = await response.json();
 
-		formStatus.textContent = 'Je mailapp wordt geopend met een ingevuld bericht.';
-		window.location.href = `mailto:hello@jayproductions.nl?subject=${subject}&body=${body}`;
+			formStatus.textContent = result.message || (response.ok ? 'Bedankt, je aanvraag is verzonden.' : 'Verzenden is niet gelukt. Probeer het opnieuw.');
+			formStatus.dataset.state = response.ok ? 'success' : 'error';
+
+			if (response.ok) {
+				contactForm.reset();
+
+				if (startedAtField) {
+					startedAtField.value = String(Math.floor(Date.now() / 1000));
+				}
+			}
+		} catch (error) {
+			formStatus.textContent = 'Verzenden is niet gelukt. Controleer je verbinding en probeer het opnieuw.';
+			formStatus.dataset.state = 'error';
+		} finally {
+			if (submitButton) {
+				submitButton.disabled = false;
+			}
+		}
 	});
 }
 

@@ -117,9 +117,75 @@ gearCloseButtons.forEach((button) => {
 	button.addEventListener('click', closeGearPanel);
 });
 
+const videoModal = document.querySelector('[data-video-modal]');
+const videoFrame = document.querySelector('[data-video-frame]');
+const videoTitle = document.querySelector('#video-modal-title');
+const videoTriggers = document.querySelectorAll('[data-video-src]');
+const videoCloseButtons = document.querySelectorAll('[data-video-close]');
+let previousVideoFocus = null;
+
+function openVideoModal(trigger) {
+	if (!videoModal || !videoFrame) {
+		return;
+	}
+
+	const videoSrc = trigger.dataset.videoSrc;
+
+	if (!videoSrc) {
+		return;
+	}
+
+	previousVideoFocus = document.activeElement;
+	videoFrame.innerHTML = '';
+
+	const iframe = document.createElement('iframe');
+	iframe.src = videoSrc;
+	iframe.title = trigger.dataset.videoTitle || 'Projectvideo';
+	iframe.loading = 'lazy';
+	iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen';
+	iframe.allowFullscreen = true;
+	iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+
+	videoFrame.appendChild(iframe);
+
+	if (videoTitle) {
+		videoTitle.textContent = trigger.dataset.videoTitle || 'Projectvideo';
+	}
+
+	videoModal.hidden = false;
+	document.body.style.overflow = 'hidden';
+	videoModal.querySelector('.video-modal-close')?.focus();
+}
+
+function closeVideoModal() {
+	if (!videoModal || !videoFrame) {
+		return;
+	}
+
+	videoModal.hidden = true;
+	videoFrame.innerHTML = '';
+	document.body.style.overflow = '';
+
+	if (previousVideoFocus && typeof previousVideoFocus.focus === 'function') {
+		previousVideoFocus.focus();
+	}
+}
+
+videoTriggers.forEach((trigger) => {
+	trigger.addEventListener('click', () => openVideoModal(trigger));
+});
+
+videoCloseButtons.forEach((button) => {
+	button.addEventListener('click', closeVideoModal);
+});
+
 document.addEventListener('keydown', (event) => {
 	if (event.key === 'Escape' && gearPanel && !gearPanel.hidden) {
 		closeGearPanel();
+	}
+
+	if (event.key === 'Escape' && videoModal && !videoModal.hidden) {
+		closeVideoModal();
 	}
 });
 

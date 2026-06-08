@@ -171,10 +171,11 @@
 
 
 				<article class="work-card" data-title="Okya Band" data-year="2023" data-tags="muziekvideo">
-					<figure class="work-media">
+					<button class="work-media work-media-trigger" type="button" data-video-src="https://www.youtube-nocookie.com/embed/SdyOdMs7s8w?rel=0&modestbranding=1&playsinline=1&autoplay=1" data-video-title="Okya Band muziekvideo">
 						<img src="https://img.youtube.com/vi/SdyOdMs7s8w/hqdefault.jpg" alt="Okya Band muziekvideo preview" loading="lazy" referrerpolicy="no-referrer" />
 						<span class="work-media-badge">Video</span>
-					</figure>
+						<span class="work-media-action">Bekijk video</span>
+					</button>
 					<div class="work-meta">
 						<span>Muziekvideo</span>
 						<span>2023</span>
@@ -185,10 +186,11 @@
 				</article>
 
 				<article class="work-card" data-title="Mexx" data-year="2022" data-tags="brandfilm">
-					<figure class="work-media">
+					<button class="work-media work-media-trigger" type="button" data-video-src="https://player.vimeo.com/video/1199096236?title=0&byline=0&portrait=0&badge=0&dnt=1&autoplay=1" data-video-title="Mexx brandfilm">
 						<img src="https://vumbnail.com/1199096236.jpg" alt="Mexx brandfilm preview" loading="lazy" referrerpolicy="no-referrer" />
 						<span class="work-media-badge">Video</span>
-					</figure>
+						<span class="work-media-action">Bekijk video</span>
+					</button>
 					<div class="work-meta">
 						<span>Brandfilm</span>
 						<span>2022</span>
@@ -199,10 +201,11 @@
 				</article>
 
 				<article class="work-card" data-title="All Safety" data-year="2024" data-tags="bedrijfsvideo">
-					<figure class="work-media">
+					<button class="work-media work-media-trigger" type="button" data-video-src="https://player.vimeo.com/video/1199089496?title=0&byline=0&portrait=0&badge=0&dnt=1&autoplay=1" data-video-title="All Safety bedrijfsvideo">
 						<img src="https://vumbnail.com/1199089496.jpg" alt="All Safety bedrijfsvideo preview" loading="lazy" referrerpolicy="no-referrer" />
 						<span class="work-media-badge">Video</span>
-					</figure>
+						<span class="work-media-action">Bekijk video</span>
+					</button>
 					<div class="work-meta">
 						<span>Bedrijfsvideo</span>
 						<span>2024</span>
@@ -213,10 +216,11 @@
 				</article>
 
 				<article class="work-card" data-title="Koi Cave" data-year="2024" data-tags="aftermovie">
-					<figure class="work-media">
+					<button class="work-media work-media-trigger" type="button" data-video-src="https://player.vimeo.com/video/1199088596?share=copy&fl=sv&fe=ci&title=0&byline=0&portrait=0&badge=0&dnt=1&autoplay=1" data-video-title="Koi Cave aftermovie">
 						<img src="https://vumbnail.com/1199088596.jpg" alt="Koi Cave aftermovie preview" loading="lazy" referrerpolicy="no-referrer" />
 						<span class="work-media-badge">Video</span>
-					</figure>
+						<span class="work-media-action">Bekijk video</span>
+					</button>
 					<div class="work-meta">
 						<span>Aftermovie</span>
 						<span>2024</span>
@@ -227,10 +231,11 @@
 				</article>
 
 				<article class="work-card" data-title="FHM Brandfilm & Podcast" data-year="2022" data-tags="podcastreeks brandfilm">
-					<figure class="work-media">
+					<button class="work-media work-media-trigger" type="button" data-video-src="https://player.vimeo.com/video/1199090792?title=0&byline=0&portrait=0&badge=0&dnt=1&autoplay=1" data-video-title="FHM brandfilm en podcast">
 						<img src="https://vumbnail.com/1199090792.jpg" alt="FHM brandfilm en podcast preview" loading="lazy" referrerpolicy="no-referrer" />
 						<span class="work-media-badge">Video</span>
-					</figure>
+						<span class="work-media-action">Bekijk video</span>
+					</button>
 					<div class="work-meta">
 						<span>Brandfilm / podcastreeks</span>
 						<span>2022</span>
@@ -255,10 +260,11 @@
 				</article>
 
 				<article class="work-card" data-title="Partij voor de Inwoners" data-year="2022" data-tags="promo-video">
-					<figure class="work-media">
+					<button class="work-media work-media-trigger" type="button" data-video-src="https://player.vimeo.com/video/1199088287?title=0&byline=0&portrait=0&badge=0&dnt=1&autoplay=1" data-video-title="Partij voor de Inwoners promo video">
 						<img src="https://vumbnail.com/1199088287.jpg" alt="Partij voor de Inwoners promo video preview" loading="lazy" referrerpolicy="no-referrer" />
 						<span class="work-media-badge">Video</span>
-					</figure>
+						<span class="work-media-action">Bekijk video</span>
+					</button>
 					<div class="work-meta">
 						<span>Promo video</span>
 						<span>2022</span>
@@ -464,6 +470,18 @@
 					</ul>
 				</section>
 			</div>
+		</div>
+	</div>
+
+	<div class="video-modal" data-video-modal hidden role="dialog" aria-modal="true" aria-labelledby="video-modal-title">
+		<button class="video-modal-backdrop" type="button" data-video-close aria-label="Video sluiten"></button>
+		<div class="video-modal-content">
+			<div class="video-modal-header">
+				<p class="eyebrow">Preview</p>
+				<h2 id="video-modal-title">Projectvideo</h2>
+				<button class="video-modal-close" type="button" data-video-close aria-label="Video sluiten">Sluiten</button>
+			</div>
+			<div class="video-modal-frame" data-video-frame></div>
 		</div>
 	</div>
 

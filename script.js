@@ -17,7 +17,7 @@ revealElements.forEach((element) => observer.observe(element));
 const footerNote = document.querySelector('.footer span');
 
 if (footerNote) {
-	footerNote.textContent = `JayProductions · ${new Date().getFullYear()}`;
+	footerNote.textContent = `Legacy Pictures · KvK 87602040 · ${new Date().getFullYear()}`;
 }
 
 const contactForm = document.querySelector('#contact-form');

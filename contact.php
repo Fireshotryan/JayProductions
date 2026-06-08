@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 session_start();
 
-const CONTACT_TO = 'jayproductions@jayproductions.nl';
-const CONTACT_FROM = 'no-reply@jayproductions.nl';
+const CONTACT_TO = 'info@legacypictures.nl';
+const CONTACT_FROM = 'info@legacypictures.nl';
 const CONTACT_REDIRECT = 'index.html#contact';
 
 function wants_json(): bool
@@ -154,9 +154,9 @@ $subject = '=?UTF-8?B?' . base64_encode($subjectText) . '?=';
 
 $body = implode("\n", [
 	'Nieuwe projectaanvraag',
-	'JayProductions',
+	'Legacy Pictures',
 	'',
-	'Er is een nieuwe aanvraag verstuurd via het contactformulier op jayproductions.nl.',
+	'Er is een nieuwe aanvraag verstuurd via het contactformulier van Legacy Pictures.',
 	'',
 	'Aanvrager',
 	'Naam: ' . $name,
@@ -174,12 +174,12 @@ $body = implode("\n", [
 ]);
 
 $headers = [
-	'From: JayProductions <' . CONTACT_FROM . '>',
+	'From: Legacy Pictures <' . CONTACT_FROM . '>',
 	'Reply-To: ' . $email,
 	'MIME-Version: 1.0',
 	'Content-Type: text/plain; charset=UTF-8',
 	'Content-Transfer-Encoding: 8bit',
-	'X-Mailer: JayProductions Contact Form',
+	'X-Mailer: Legacy Pictures Contact Form',
 ];
 
 $_SESSION['last_contact_submit'] = $now;
@@ -190,5 +190,5 @@ respond_contact(
 	$sent ? 'sent' : 'error',
 	$sent
 		? 'Bedankt, je aanvraag is verzonden. We nemen zo snel mogelijk contact op.'
-		: 'Verzenden is niet gelukt. Probeer het later opnieuw of mail direct naar jayproductions@jayproductions.nl.'
+		: 'Verzenden is niet gelukt. Probeer het later opnieuw of mail direct naar info@legacypictures.nl.'
 );
